@@ -1,28 +1,28 @@
- export function createMarkUp(imgs) {
-        
-    const markUp = imgs.map(({downloads, comments, views, tags, webformatURL, largeImageURL, likes }) => {
-    return `<div class="photo-card">
-        <a href= "${largeImageURL}"><img src="${webformatURL}" class="photo" width="600px" height="400px" alt="${tags}" loading="lazy" /></a>
-            <div class="info">
-            <p class="info-item">
-                <b>Likes</b>
-                ${likes}
-                </p>
-            <p class="info-item">
-                <b>Views</b>
-                ${views}
-                </p>
-            <p class="info-item">
-                <b>Comments</b>
-                ${comments}
-                </p>
-            <p class="info-item">
-                <b>Downloads</b>
-                ${downloads}
-                </p>
-            </div>
-    </div>`
-        }).join("")
-        
-    return markUp
+export function renderMarkupInfo(data) {
+    const defaults = {
+        image: "https://react.semantic-ui.com/images/wireframe/image.png",
+        numbers : "not found"
+    }
+        return data.hits.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) =>
+        `<a class="photo-card" href="${largeImageURL}">
+        <img src="${webformatURL || defaults.image}" alt="${tags}" height="300px" loading="lazy" />
+        <div class="info">
+          <p class="info-item">
+            <b>Likes</b>
+            <span class="info-item-span">${likes || defaults.numbers}</span>
+          </p>
+          <p class="info-item">
+            <b>Views</b>
+            <span class="info-item-span">${views || defaults.numbers}</span>
+          </p>
+          <p class="info-item">
+            <b>Comments</b>
+            <span class="info-item-span">${comments|| defaults.numbers}</span>
+          </p>
+          <p class="info-item">
+            <b>Downloads</b>
+            <span class="info-item-span">${downloads || defaults.numbers}</span>
+          </p>
+        </div>
+      </a>`).join('')
 }

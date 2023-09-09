@@ -14,30 +14,34 @@
     <link rel="stylesheet" href="./css/common.css" />
   </head>
   <body>
-    <header>
-      <form class="search-form" id="search-form">
-        <input
-          required
-          class="search-form-input"
-          type="text"
-          name="searchInput"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
-        <button name="searchButton" type="submit" class="search-form-button">
-          Search
-        </button>
-      </form>
+    <header class="header-section">
+      <div class="header-container">
+        <form class="search-form" id="search-form">
+          <div class="input-wrapper">
+            <input
+              class="input-form"
+              type="text"
+              name="searchQuery"
+              autocomplete="off"
+              placeholder="Search images..."
+            />
+            <button class="search-btn" type="submit">
+              <svg class="search-icon" width="18" height="18">
+                <use href="./images/symbol-defs.svg#icon-search"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
     </header>
 
-    <div class="gallery">
-      <!-- Картки зображень -->
-    </div>
-
-    <button type="button" hidden="true" class="load-more">Load more</button>
-    <p class="final-message" hidden="true">
-      We're sorry, but you've reached the end of search results.
-    </p>
+    <main>
+      <div class="main-container">
+        <div class="gallery"></div>
+        <div class="js-guard is-hidden"></div>
+        <button type="button" class="load-more is-hidden">Load more</button>
+      </div>
+    </main>
 
     <script src="./index.js" type="module"></script>
   </body>
